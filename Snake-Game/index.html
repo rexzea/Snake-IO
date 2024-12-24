@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game Deluxe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="game-wrapper">
+        <div class="game-header">
+            <div class="score-container">
+                <div id="current-score">
+                    <i class="fas fa-star"></i> Skor: 0
+                </div>
+                <div id="high-score">
+                    <i class="fas fa-trophy"></i> Skor Tertinggi: 0
+                </div>
+            </div>
+            <div class="level-info">
+                <i class="fas fa-level-up-alt"></i> Level: <span id="level">1</span>
+            </div>
+        </div>
+
+        <div id="game-container">
+            <canvas id="gameCanvas"></canvas>
+            
+            <div id="start-screen" class="overlay">
+                <h1><i class="fas fa-snake"></i> Snake Game</h1>
+                <p><i class="fas fa-gamepad"></i> Gunakan tombol panah untuk bergerak</p>
+                <button id="start-button">
+                    <i class="fas fa-play"></i> Mulai Game
+                </button>
+            </div>
+
+            <div id="game-over" class="overlay">
+                <h2><i class="fas fa-skull"></i> Game Over!</h2>
+                <p>Skor Akhir: <span id="final-score">0</span></p>
+                <p>Skor Tertinggi: <span id="end-high-score">0</span></p>
+                <button id="restart-button">
+                    <i class="fas fa-redo"></i> Main Lagi
+                </button>
+            </div>
+
+            <div id="pause-screen" class="overlay">
+                <h2><i class="fas fa-pause"></i> Game Dijeda</h2>
+                <p>Tekan SPACE untuk melanjutkan</p>
+            </div>
+        </div>
+
+        <div class="controls-info">
+            <p>
+                <i class="fas fa-arrows-alt"></i> : Bergerak | 
+                <i class="fas fa-space-shuttle"></i> SPACE : Jeda | 
+                <i class="fas fa-pause"></i> P : Jeda
+            </p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
