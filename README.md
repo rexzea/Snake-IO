@@ -68,7 +68,6 @@ cd Snake-Game
 ## 📸 Preview
 
 ![Snake](pict1.png)
-![Snake](pict2.png)
 
 ## 🔄 Future Updates
 
