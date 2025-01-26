@@ -3,27 +3,21 @@ class SnakeGame {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
         
-        // Set canvas size
         this.canvas.width = 600;
         this.canvas.height = 600;
-        
-        // Game configuration
+
         this.gridSize = 20;
         this.tileCount = this.canvas.width / this.gridSize;
         this.initialSpeed = 150;
-        
-        // Game state
+
         this.isPaused = false;
         this.isGameOver = false;
         this.isStarted = false;
-        
-        // Initialize game elements
+
         this.resetGame();
-        
-        // Setup event listeners
+
         this.setupEventListeners();
-        
-        // High score from localStorage
+
         this.highScore = parseInt(localStorage.getItem('snakeHighScore')) || 0;
         this.updateHighScore();
     }
@@ -53,7 +47,6 @@ class SnakeGame {
     handleKeyPress(event) {
         if (!this.isStarted) return;
 
-        // Pause game
         if (event.code === 'Space' || event.key.toLowerCase() === 'p') {
             this.togglePause();
             return;
@@ -67,19 +60,19 @@ class SnakeGame {
         const goingRight = this.dx === 1;
         const goingLeft = this.dx === -1;
 
-        if (keyPressed === 37 && !goingRight) { // Left
+        if (keyPressed === 37 && !goingRight) { 
             this.dx = -1;
             this.dy = 0;
         }
-        if (keyPressed === 38 && !goingDown) { // Up
+        if (keyPressed === 38 && !goingDown) {
             this.dx = 0;
             this.dy = -1;
         }
-        if (keyPressed === 39 && !goingLeft) { // Right
+        if (keyPressed === 39 && !goingLeft) { 
             this.dx = 1;
             this.dy = 0;
         }
-        if (keyPressed === 40 && !goingUp) { // Down
+        if (keyPressed === 40 && !goingUp) { 
             this.dx = 0;
             this.dy = 1;
         }
@@ -116,12 +109,10 @@ class SnakeGame {
     checkCollision() {
         const head = this.snake[0];
         
-        // Wall collision
         if (head.x < 0 || head.x >= this.tileCount || head.y < 0 || head.y >= this.tileCount) {
             return true;
         }
 
-        // Self collision
         for (let i = 1; i < this.snake.length; i++) {
             if (head.x === this.snake[i].x && head.y === this.snake[i].y) {
                 return true;
@@ -160,17 +151,13 @@ class SnakeGame {
     }
 
     draw() {
-        // Clear canvas
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // Draw snake
         this.snake.forEach((segment, index) => {
             if (index === 0) {
-                // Draw head
                 this.ctx.fillStyle = '#4CAF50';
             } else {
-                // Draw body with gradient
                 const gradient = this.ctx.createLinearGradient(
                     segment.x * this.gridSize,
                     segment.y * this.gridSize,
@@ -190,7 +177,6 @@ class SnakeGame {
             );
         });
 
-        // Draw food
         this.ctx.fillStyle = '#ff4444';
         this.ctx.beginPath();
         this.ctx.arc(
@@ -206,22 +192,18 @@ class SnakeGame {
     update() {
         if (this.dx === 0 && this.dy === 0) return;
 
-        // Move snake
         const head = { x: this.snake[0].x + this.dx, y: this.snake[0].y + this.dy };
         this.snake.unshift(head);
 
-        // Check collision
         if (this.checkCollision()) {
             this.gameOver();
             return;
         }
 
-        // Check food collision
         if (head.x === this.food.x && head.y === this.food.y) {
             this.score += 10;
             this.updateScore();
-            
-            // Level up every 50 points
+
             if (this.score % 50 === 0) {
                 this.level++;
                 this.speed = Math.max(50, this.initialSpeed - (this.level - 1) * 10);
@@ -255,7 +237,6 @@ class SnakeGame {
     }
 }
 
-// Initialize game when window loads
 window.onload = () => {
     const game = new SnakeGame();
     document.getElementById('start-screen').style.display = 'flex';
