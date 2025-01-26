@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    /* Color Palette */
     --primary-color: #00ff88;
     --primary-dark: #00cc6a;
     --secondary-color: #ff3366;
@@ -12,7 +11,6 @@
     --text-light: #ffffff;
     --text-dim: rgba(255, 255, 255, 0.7);
     
-    /* Effects */
     --neon-primary: 0 0 10px rgba(0, 255, 136, 0.5),
                     0 0 20px rgba(0, 255, 136, 0.3),
                     0 0 30px rgba(0, 255, 136, 0.1);
@@ -41,7 +39,6 @@ body {
     position: relative;
 }
 
-/* Background Animation */
 body::before {
     content: '';
     position: absolute;
@@ -255,7 +252,6 @@ button:active {
     transform: translateZ(20px) scale(1.02);
 }
 
-/* Advanced Animations */
 @keyframes backgroundMove {
     0% { transform: translate(0, 0) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -290,7 +286,6 @@ button:active {
     100% { transform: scale(1) rotate(0deg); }
 }
 
-/* Score Flash Effect */
 .score-flash {
     animation: scoreFlash 0.5s ease;
 }
@@ -301,7 +296,6 @@ button:active {
     100% { transform: scale(1); }
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -321,7 +315,11 @@ button:active {
     background: var(--primary-dark);
 }
 
-/* Responsive Design */
+
+
+
+
+
 @media (max-width: 650px) {
     .game-wrapper {
         padding: 15px;
@@ -358,7 +356,13 @@ button:active {
     }
 }
 
-/* High Performance Mode */
+
+
+
+
+
+
+
 @media (prefers-reduced-motion: reduce) {
     .game-wrapper, .game-header, #game-container, .controls-info {
         transition: none;
